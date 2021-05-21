@@ -1,0 +1,36 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Sınıflar
+@model List<Faturalar>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table table-bordered" style="margin-top:20px">
+    <tr>
+        <th>SERİ / SIRA NO</th>
+        <th>VERGİ DAİRESİ</th>
+        <th>TARİH / SAAT</th>
+        <th>TESLİM EDEN</th>
+        <th>TESLİM ALAN</th>
+        <th>TUTAR</th>
+        <th>GÜNCELLE</th>
+        <th>DETAY</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.FaturaSeriNo / @item.FaturaSıraNo</td>
+            <td>@item.FaturaVergiDairesi</td>
+            <td>@Convert.ToDateTime(item.FaturaTarih).ToString("dd/MM/yyyy") / @item.FaturaSaat</td>
+            <td>@item.FaturaTeslimEden</td>
+            <td>@item.FaturaTeslimAlan</td>
+            <td>@item.FaturaTutar<span>₺</span></td>
+            <td><a href="/Fatura/FaturaGetir/@item.FaturaID" class="btn btn-success">Güncelle</a></td>
+            <td><a href="/Fatura/FaturaDetay/@item.FaturaID" class="btn btn-success" style="background-color:#4f4e4e;border-color:#4f4e4e">Detay</a></td>
+        </tr>
+    }
+</table>
+<a href="/Fatura/FaturaEkle" class="btn btn-primary">Yeni Fatura</a>
+
+
+

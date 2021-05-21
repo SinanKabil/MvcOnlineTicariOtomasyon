@@ -1,0 +1,44 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Sınıflar.SatisHareket
+@{
+    ViewBag.Title = "SatisYap";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2 style="text-align:center">Satış Sayfası</h2>
+<br />
+<form class="form-group" method="post">
+    <label>ID</label>
+    <input readonly type="text" name="UrunId" value="@ViewBag.dgr2" class="form-control" />
+    <br />
+    <label>Personel</label>
+    @Html.DropDownListFor(x => x.PersonelId, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+    <br />
+    <label>Müşteri</label>
+    @Html.TextBoxFor(x => x.CariId, new { @class = "form-control" })
+    <br />
+    <label>Adet</label>
+    <input type="number" name="SatisHareketAdet" min="0" onchange="tutar();" placeholder="Adet" class="form-control" id="SatisAdet" />
+    <br />
+    <label>Fiyat</label>
+    <input id="SatisFiyat" onkeyup="tutar();" type="text" name="SatisHareketFiyat" value="@ViewBag.dgr3" class="form-control" />
+    <br />
+    <label>Toplam Tutar</label>
+    <input id="SatisSonuc" name="SatisHareketToplamTutar" type="text" value="0" class="form-control" readonly />
+    <br />
+    <button class="btn btn-primary">Satış Yap</button>
+</form>
+<script>
+    function tutar() {
+        var sayi1 = document.getElementById('SatisAdet').value;
+        console.log(sayi1);
+        var sayi2 = document.getElementById('SatisFiyat').value;
+        console.log(sayi2);
+        var sonuc = parseInt(sayi1) * parseInt(sayi2);
+        console.log(sonuc);
+        if (!isNaN(sonuc)) {
+            document.getElementById('SatisSonuc').value = sonuc;
+        }
+    }
+</script>
+

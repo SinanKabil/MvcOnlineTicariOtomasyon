@@ -1,0 +1,28 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Sınıflar.FaturaKalem
+@{
+    ViewBag.Title = "FaturaKalemEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2 style="text-align:center">Yeni Fatura Kalem Sayfası</h2>
+<br />
+<form class="form-group" method="post">
+    <label>Açıklama</label>
+    @Html.TextBoxFor(x => x.FaturaKalemAciklama, new { @class = "form-control" })
+    <br />
+    <label>Birim Fiyat</label>
+    @Html.TextBoxFor(x => x.FaturaKalemBirimFiyat, new { @class = "form-control" })
+    <br />
+    <label>Miktar</label>
+    @Html.TextBoxFor(x => x.FaturaKalemMiktar, new { @class = "form-control" })
+    <br />
+    <label>Tutar</label>
+    @Html.TextBoxFor(x => x.FaturaKalemTutar, new { @class = "form-control" })
+    <br />
+    <label>Fatura ID</label>
+    @Html.TextBoxFor(x=>x.FaturaId, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-primary">Ekle</button>
+</form>
+
